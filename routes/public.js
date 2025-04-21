@@ -15,14 +15,13 @@ router.post('/login', async (req, res) => {
     res.status(401).json({ error: 'Invalid credentials' })
 })
 
-//Exemplo de rota pública
 router.get('/gatos', async (req, res) => {
     try {
-        const [rows] = await req.db.query('SELECT * FROM cats')
-        res.status(201).json(rows)
+        const [rows] = await req.db.query('SELECT * FROM cats');
+        res.status(200).json(rows);
     } catch (error) {
-        console.error('Error fetching cats:', error)
-        res.status(500).json({ error: 'Error fetching cats' })
+        console.error('Error fetching cats:', error);
+        res.status(500).json({ error: 'Error fetching cats' });
     }
 })
 
